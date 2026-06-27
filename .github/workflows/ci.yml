@@ -108,7 +108,9 @@ jobs:
 
       - name: Instalar navegadores Playwright
         working-directory: ./tests
-        run: npx --yes playwright install chromium --with-deps
+        run: |
+          npm install -g @playwright/test
+          playwright install chromium --with-deps
 
       - name: Criar application.properties da API
         run: |
