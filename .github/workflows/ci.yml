@@ -35,8 +35,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Dar permissão ao mvnw
-        working-directory: ./api
-        run: chmod +x mvnw
+        run: chmod +x api/mvnw
 
       - name: Rodar testes do backend
         working-directory: ./api
@@ -97,8 +96,7 @@ jobs:
           node-version: '20'
 
       - name: Dar permissão ao mvnw
-        working-directory: ./api
-        run: chmod +x mvnw
+        run: chmod +x api/mvnw
 
       - name: Instalar dependências do cliente
         working-directory: ./client
@@ -110,7 +108,7 @@ jobs:
 
       - name: Instalar navegadores Playwright
         working-directory: ./tests
-        run: npx playwright install chromium --with-deps
+        run: node node_modules/.bin/playwright install chromium --with-deps
 
       - name: Criar application.properties da API
         run: |
@@ -157,4 +155,4 @@ jobs:
 
       - name: Rodar testes Playwright (apenas API)
         working-directory: ./tests
-        run: npx playwright test tests/api --reporter=list
+        run: node node_modules/.bin/playwright test tests/api --reporter=list
